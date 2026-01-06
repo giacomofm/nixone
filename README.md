@@ -23,18 +23,20 @@ mkfs.ext4 -L nixos /dev/sdX1
 mkswap -L swap /dev/sdX2
 mkfs.fat -F 32 -n boot /dev/sdX3
 ```
-### Installing
+### Pre-Installing
 ```console
 mount /dev/disk/by-label/nixos /mnt
 # (for UEFI)
 mkdir -p /mnt/boot
 mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
-
-`nixos-generate-config --root /mnt` per creare la base  
-`cd /mnt/etc/nixos`  
-clona `git clone https://github.com/giacomofm/nixone.git` (•̀ᴗ•́)و  
-edita `/mnt/etc/nixos/configuration.nix` (negli import: `./nixone/[?]/os.nix`)  
+### Preparing
+```console
+nixos-generate-config --root /mnt # per creare la base  
+cd /mnt/etc/nixos
+git clone https://github.com/giacomofm/nixone.git # clonato il repo (•̀ᴗ•́)و  
+vi /mnt/etc/nixos/configuration.nix # edit: negli import: `./nixone/[?]/os.nix`
+```  
 
 `nixos-install`
 
