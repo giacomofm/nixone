@@ -1,8 +1,20 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   services.xserver.videoDrivers = ["nvidia"];
   hardware.graphics.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
+/*
+    # Per una versione specifica (+ commenta riga sopra):
+    package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+      version = "580.105.08";
+      sha256_64bit = "sha256-2cboGIZy8+t03QTPpp3VhHn6HQFiyMKMjRdiV2MpNHU=";
+      sha256_aarch64 = "sha256-2cboGIZy8+t03QTPpp3VhHn6HQFiyMKMjRdiV2MpNHU=";
+      openSha256 = "sha256-F2wmUEaRrpR1Vz0TQSwVK4Fv13f3J9NJLtBe4UP2f14=";
+      settingsSha256 = "sha256-F2wmUEaRrpR1Vz0TQSwVK4Fv13f3J9NJLtBe4UP2f14=";
+      persistencedSha256 = lib.fakeSha256;
+    };
+*/
+
     modesetting.enable = true;
 
     # Enable the Nvidia settings menu, accessible via `nvidia-settings`.
