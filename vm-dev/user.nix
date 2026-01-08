@@ -9,6 +9,7 @@
       jetbrains-toolbox
       spring-boot-cli
       google-chrome
+      bruno
     ];
   };
 }
