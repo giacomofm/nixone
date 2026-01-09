@@ -1,4 +1,9 @@
 { pkgs, ... }: {
+  programs.git = {
+    enable = true;
+    userEmail = "giacomo.fraron@avvale.com";
+    userName = "giacomo";
+  };
   users.users.giacomo = {
     uid = 1000;
     isNormalUser = true;
@@ -9,6 +14,7 @@
       jetbrains-toolbox
       spring-boot-cli
       google-chrome
+      httpie
       bruno
     ];
   };

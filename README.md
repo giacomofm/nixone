@@ -67,5 +67,6 @@ sudo nixos-rebuild switch --upgrade
 
 ```console
 cd /etc/nixos/nixone
-git add . && git commit -m "[ma message]" && git push
+git pull
+git add . && git commit -m "Update" && git push
 ```

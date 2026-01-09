@@ -2,8 +2,8 @@
   imports = [
     ./locale.nix
     ./desktop.nix
+    ./user.nix
   ];
-  # system.stateVersion = "25.05";
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
@@ -14,7 +14,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
-  system.autoUpgrade.channel = "https://channels.nixos.org/nixos-25.05";
   # Network
   networking = {
     hostName = "vmsimp";
@@ -46,14 +45,4 @@
   environment.pathsToLink = [
     "share/thumbnailers"
   ];
-  # User
-  users.users.juk = {
-    uid = 1000;
-    isNormalUser = true;
-    description = "Juk";
-    extraGroups = [ "wheel" "networkmanager" ];
-    packages = with pkgs; [
-      qbittorrent
-    ];
-  };
 }
