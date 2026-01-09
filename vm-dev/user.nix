@@ -1,8 +1,10 @@
 { pkgs, ... }: {
   programs.git = {
     enable = true;
-    userEmail = "giacomo.fraron@avvale.com";
-    userName = "giacomo";
+    config = {
+      user.name = "giacomo";
+      user.email = "giacomo.fraron@avvale.com";
+    };
   };
   users.users.giacomo = {
     uid = 1000;

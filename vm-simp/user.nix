@@ -21,9 +21,19 @@ in
     # The state version is required and should stay at the version you originally installed.
     home.stateVersion = "25.11";
     # home.packages = [ pkgs.atool pkgs.httpie ];
-    programs.bash.enable = true;
     home.shellAliases = {
-      "buuu" = "shutdown now";
+      buuu = "shutdown now";
+    };
+    programs.bash = {
+      enable = true;
+      bashrcExtra = ''
+        fifi() {
+          sudo find / -type f -iname "$1" -not -path "/nix/store/*"
+        }
+        fidi() {
+          sudo find / -type d -iname "$1" -not -path "/nix/store/*"
+        }
+      '';
     };
   };
 }
