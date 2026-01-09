@@ -28,7 +28,7 @@ in
       bruno
     ];
   };
-  home-manager.users.juk = { pkgs, ... }: {
+  home-manager.users.giacomo = { pkgs, ... }: {
     # The state version is required and should stay at the version you originally installed.
     home.stateVersion = "25.11";
     # home.packages = [ pkgs.atool pkgs.httpie ];
@@ -46,6 +46,13 @@ in
           sudo find / -type d -iname "$1" -not -path "/nix/store/*"
         }
       '';
+    };
+    dconf.settings = {
+      "org/gnome/desktop/wm/keybindings" = {
+        # switch-to-workspace-down = ["<Control><Alt>Page_Down"];
+        switch-to-workspace-down = [];
+        switch-to-workspace-up = [];
+      };
     };
   };
 }
