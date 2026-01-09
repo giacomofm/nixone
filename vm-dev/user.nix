@@ -34,7 +34,6 @@ in
     # home.packages = [ pkgs.atool pkgs.httpie ];
     home.shellAliases = {
       buuu = "shutdown now";
-      nixone = "cd /etc/nixos/nixone && git pull && echo '> git add . && git commit -m \"Update\" && git push' && echo '> sudo nixos-rebuild switch --upgrade'";
     };
     programs.bash = {
       enable = true;
@@ -44,6 +43,13 @@ in
         }
         fidi() {
           sudo find / -type d -iname "$1" -not -path "/nix/store/*"
+        }
+        nixone() {
+          cd /etc/nixos/nixone
+          git pull
+          echo '> sudo nixos-rebuild test'
+          echo '> git add . && git commit -m "Update" && git push'
+          echo '> sudo nixos-rebuild switch --upgrade'
         }
       '';
     };

@@ -29,7 +29,7 @@ in
     # home.packages = [ pkgs.atool pkgs.httpie ];
     home.shellAliases = {
       buuu = "shutdown now";
-      nixone = "cd /etc/nixos/nixone && git pull && echo '> git add . && git commit -m \"Update\" && git push' && echo '> sudo nixos-rebuild switch --upgrade'";
+      nixone = "cd /etc/nixos/nixone && git pull && echo '> sudo nixos-rebuild switch --upgrade'";
     };
     programs.bash = {
       enable = true;
