@@ -66,7 +66,6 @@ sudo nixos-rebuild switch --upgrade
 ## Git Utils
 
 ```console
-cd /etc/nixos/nixone
-git pull
+cd /etc/nixos/nixone && git pull
 git add . && git commit -m "Update" && git push
 ```

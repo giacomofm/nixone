@@ -7,7 +7,13 @@ in
   [
     (import "${home-manager}/nixos")
   ];
-
+  programs.git = {
+    enable = true;
+    config = {
+      user.name = "Giacomo";
+      user.email = "giacomo.fraron@gmail.com";
+    };
+  };
   users.users.juk = {
     uid = 1000;
     isNormalUser = true;
@@ -17,12 +23,13 @@ in
       qbittorrent
     ];
   };
-  home-manager.users.eve = { pkgs, ... }: {
+  home-manager.users.juk = { pkgs, ... }: {
     # The state version is required and should stay at the version you originally installed.
     home.stateVersion = "25.11";
     # home.packages = [ pkgs.atool pkgs.httpie ];
     home.shellAliases = {
       buuu = "shutdown now";
+      nixone = "cd /etc/nixos/nixone && git pull && echo '> git add . && git commit -m \"Update\" && git push' && echo '> sudo nixos-rebuild switch --upgrade'";
     };
     programs.bash = {
       enable = true;
