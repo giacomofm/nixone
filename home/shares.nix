@@ -1,8 +1,15 @@
 { ... } : 
 let
   on_ftp = false;
-  on_samba = true;
+  on_samba = false;
+  on_jellyfin = true;
 in {
+  # Jellyfin
+  # (?) sudo setfacl -R -m u:jellyfin:rx /path/to/open
+  services.jellyfin = {
+    enable = on_jellyfin;
+    openFirewall = true;
+  };
   # Network
   networking.firewall = {
     enable = true;
@@ -32,6 +39,9 @@ in {
         "netbios name" = "smbnix";
         "security" = "user";
         "map to guest" = "bad user";
+        # Performance
+        "use sendfile" = true;
+        "strict locking" = false;
       };
     };
   };
