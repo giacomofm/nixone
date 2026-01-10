@@ -1,0 +1,72 @@
+{ pkgs, lib, ... }:
+let
+  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/master.tar.gz;
+in {
+  imports = [
+    (import "${home-manager}/nixos")
+  ];
+  users.users.juk = {
+    uid = 1000;
+    isNormalUser = true;
+    description = "Juk";
+    extraGroups = [ "wheel" "networkmanager" ];
+    packages = with pkgs; [
+      jetbrains-toolbox
+      qbittorrent
+      spotify
+      httpie
+    ];
+  };
+  services.usbmuxd.enable = true;
+  programs = {
+    git = {
+      enable = true;
+      config = {
+        user.name = "Giacomo";
+        user.email = "giacomo.fraron@gmail.com";
+      };
+    };
+    steam = {
+      enable = true;
+      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+    };
+  };
+  home-manager.users.juk = { pkgs, ... }: {
+    # The state version is required and should stay at the version you originally installed.
+    home.stateVersion = "25.05";
+    # home.packages = [ pkgs.atool pkgs.httpie ];
+    home.shellAliases = {
+      buuu = "shutdown now";
+      nn = "nordvpn";
+      nns = "nordvpn status";
+      nnc = "nordvpn connect Switzerland";
+    };
+    programs.bash = {
+      enable = true;
+      bashrcExtra = ''
+        fifi() {
+          sudo find / -type f -iname "$1" -not -path "/nix/store/*"
+        }
+        fidi() {
+          sudo find / -type d -iname "$1" -not -path "/nix/store/*"
+        }
+        nixone() {
+          cd /etc/nixos/nixone
+          git pull
+          echo '> sudo nixos-rebuild test'
+          echo '> git add . && git commit -m "Update" && git push'
+          echo '> sudo nixos-rebuild switch --upgrade'
+        }
+      '';
+    };
+    dconf.settings = {
+      "org/gnome/desktop/wm/keybindings" = {
+        # switch-to-workspace-down = ["<Control><Alt>Page_Down"];
+        switch-to-workspace-down = [];
+        switch-to-workspace-up = [];
+      };
+    };
+  };
+}

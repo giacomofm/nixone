@@ -1,16 +1,29 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./locale.nix
+    ./desktop.nix
+    ./user.nix
+    # With also
     ./shares.nix
+    ./disk-tera.nix
     ./nordvpn.nix
-    ./desktop/os.nix
   ];
-  # system.stateVersion = "25.05";
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # Boot
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
-  system.autoUpgrade.channel = "https://channels.nixos.org/nixos-25.05";
+  # Network
+  networking = {
+    hostName = "desknix";
+    extraHosts = ''
+      127.0.0.1 www.sublimetext.com
+      127.0.0.1 sublimetext.com
+    '';
+  };
   # App
   nixpkgs.config = { 
     allowUnfree = true;
@@ -18,10 +31,24 @@
       "openssl-1.1.1w"
     ];
   };
+  # programs.appimage.enable = true;
+  programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
-    gparted
+    gnome-system-monitor
     git
-    vlc
+    ghostty
+    sublime4
+    nautilus
     ffmpeg
+    vlc
+    gparted
+    loupe
+    input-remapper
+    hydrapaper
+    ffmpegthumbnailer     # https://wiki.nixos.org/wiki/Thumbnails
+    gdk-pixbuf            # https://wiki.nixos.org/wiki/Thumbnails
+  ];
+  environment.pathsToLink = [
+    "share/thumbnailers"  # https://wiki.nixos.org/wiki/Thumbnails
   ];
 }

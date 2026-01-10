@@ -33,12 +33,6 @@ in {
         "security" = "user";
         "map to guest" = "bad user";
       };
-      "tera" = {
-        "path" = "/mnt/Tera/Giacomo";
-        "browseable" = "yes";
-        "read only" = "no";
-        "guest ok" = "no";
-      };
     };
   };
   services.samba-wsdd = {
