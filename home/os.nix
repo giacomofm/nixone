@@ -24,6 +24,8 @@
       127.0.0.1 sublimetext.com
     '';
   };
+  # Docker
+  virtualisation.docker.enable = true;
   # App
   nixpkgs.config = { 
     allowUnfree = true;
