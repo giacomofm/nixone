@@ -7,13 +7,6 @@ in
   [
     (import "${home-manager}/nixos")
   ];
-  programs.git = {
-    enable = true;
-    config = {
-      user.name = "Giacomo";
-      user.email = "giacomo.fraron@avvale.com";
-    };
-  };
   users.users.giacomo = {
     uid = 1000;
     isNormalUser = true;
@@ -52,6 +45,11 @@ in
           echo '> sudo nixos-rebuild switch --upgrade'
         }
       '';
+    };
+    programs.git = {
+      enable = true;
+      settings.user.name  = "Giacomo Fraron";
+      settings.user.email = "giacomo.fraron@avvale.com";
     };
     dconf.settings = {
       "org/gnome/desktop/wm/keybindings" = {

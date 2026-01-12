@@ -18,20 +18,11 @@ in {
     ];
   };
   services.usbmuxd.enable = true;
-  programs = {
-    git = {
-      enable = true;
-      config = {
-        user.name = "Giacomo";
-        user.email = "giacomo.fraron@gmail.com";
-      };
-    };
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-      dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-      localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
-    };
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;                 # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true;            # Open ports in the firewall for Source Dedicated Server
+    localNetworkGameTransfers.openFirewall = true;  # Open ports in the firewall for Steam Local Network Game Transfers
   };
   home-manager.users.juk = { pkgs, ... }: {
     # The state version is required and should stay at the version you originally installed.
@@ -60,6 +51,11 @@ in {
           echo '> sudo nixos-rebuild switch --upgrade'
         }
       '';
+    };
+    programs.git = {
+      enable = true;
+      settings.user.name  = "Giacomo Fraron";
+      settings.user.email = "giacomo.fraron@gmail.com";
     };
     dconf.settings = {
       "org/gnome/desktop/wm/keybindings" = {

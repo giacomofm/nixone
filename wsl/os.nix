@@ -21,6 +21,5 @@
     ffmpeg
     ghostty
     javaPackages.compiler.temurin-bin.jdk-25
-    jetbrains-toolbox
   ];
 }

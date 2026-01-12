@@ -7,13 +7,6 @@ in
   [
     (import "${home-manager}/nixos")
   ];
-  programs.git = {
-    enable = true;
-    config = {
-      user.name = "Giacomo";
-      user.email = "giacomo.fraron@gmail.com";
-    };
-  };
   users.users.juk = {
     uid = 1000;
     isNormalUser = true;
@@ -41,6 +34,11 @@ in
           sudo find / -type d -iname "$1" -not -path "/nix/store/*"
         }
       '';
+    };
+    programs.git = {
+      enable = true;
+      settings.user.name  = "Giacomo Fraron";
+      settings.user.email = "giacomo.fraron@gmail.com";
     };
   };
 }
