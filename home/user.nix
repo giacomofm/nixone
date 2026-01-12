@@ -9,7 +9,7 @@ in {
     uid = 1000;
     isNormalUser = true;
     description = "Juk";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "docker" ];
     packages = with pkgs; [
       jetbrains-toolbox
       qbittorrent
