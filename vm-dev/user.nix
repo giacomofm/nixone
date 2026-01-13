@@ -18,6 +18,7 @@ in
       spring-boot-cli
       google-chrome
       httpie
+      dbeaver-bin
       bruno
     ];
   };
