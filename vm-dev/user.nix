@@ -21,6 +21,7 @@ in
       dbeaver-bin
       bruno
       meld
+      openshift
     ];
   };
   home-manager.users.giacomo = { pkgs, ... }: {
