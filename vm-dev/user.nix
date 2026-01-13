@@ -20,6 +20,7 @@ in
       httpie
       dbeaver-bin
       bruno
+      meld
     ];
   };
   home-manager.users.giacomo = { pkgs, ... }: {
