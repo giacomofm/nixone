@@ -16,12 +16,14 @@ in
       javaPackages.compiler.temurin-bin.jdk-25
       jetbrains-toolbox
       spring-boot-cli
-      google-chrome
+      maven
       httpie
+      nodejs
+      openshift
+      google-chrome
       dbeaver-bin
       bruno
       meld
-      openshift
     ];
   };
   home-manager.users.giacomo = { pkgs, ... }: {
