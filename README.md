@@ -69,3 +69,12 @@ sudo nixos-rebuild switch --upgrade
 cd /etc/nixos/nixone && git pull
 git add . && git commit -m "Update" && git push
 ```
+
+# NixOS WSL
+
+[NixOS-WSL](https://github.com/nix-community/NixOS-WSL) 
+
+```console
+sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
+sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/main.tar.gz nixos-wsl
+```

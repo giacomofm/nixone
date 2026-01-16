@@ -20,5 +20,6 @@
     git
     ffmpeg
     # ghostty
+    sublime4
   ];
 }
