@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/master.tar.gz;
+  java-version = pkgs.javaPackages.compiler.temurin-bin.jdk-25;
 in
 {
   imports =
@@ -13,7 +14,7 @@ in
     description = "Giacomo";
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     packages = with pkgs; [
-      javaPackages.compiler.temurin-bin.jdk-25
+      java-version
       jetbrains-toolbox
       spring-boot-cli
       maven
@@ -32,6 +33,9 @@ in
     # home.packages = [ pkgs.atool pkgs.httpie ];
     home.shellAliases = {
       buuu = "shutdown now";
+    };
+    home.sessionVariables = {
+      JAVA_HOME = "${java-version}";
     };
     programs.bash = {
       enable = true;
