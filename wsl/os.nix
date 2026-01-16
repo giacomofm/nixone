@@ -1,6 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ./locale.nix
+    ./user.nix
   ];
   nix.settings.experimental-features = [
     "nix-command"
@@ -8,7 +9,6 @@
   ];
   # Docker
   virtualisation.docker.enable = true;
-  users.users.nixos.extraGroups = [ "docker" ];
   # App
   nixpkgs.config = { 
     allowUnfree = true;
@@ -19,7 +19,6 @@
   environment.systemPackages = with pkgs; [
     git
     ffmpeg
-    ghostty
-    javaPackages.compiler.temurin-bin.jdk-25
+    # ghostty
   ];
 }
