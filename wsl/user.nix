@@ -30,10 +30,10 @@ in
       enable = true;
       bashrcExtra = builtins.replaceStrings [ "\r" ] [ "" ] ''
       fifi() {
-        sudo find / -type f -iname "$1" -not -path "/nix/store/*"
+        sudo find /home /mnt/c/Users/GiacomoFraron -type f -iname "$1"
       }
       fidi() {
-        sudo find / -type d -iname "$1" -not -path "/nix/store/*"
+        sudo find /home /mnt/c/Users/GiacomoFraron -type d -iname "$1"
       }
       nixone() {
         cd /mnt/c/Users/GiacomoFraron/Documents/NixOS/nixone
