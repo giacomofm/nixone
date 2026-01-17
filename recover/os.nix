@@ -16,20 +16,8 @@
 #  boot.loader.systemd-boot.enable = true;
 #  boot.loader.systemd-boot.editor = false;
   # Network
-  networking = {
-    hostName = "recover";
-    extraHosts = ''
-      127.0.0.1 www.sublimetext.com
-      127.0.0.1 sublimetext.com
-    '';
-  };
+  networking.hostName = "recover";
   # App
-  nixpkgs.config = { 
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "openssl-1.1.1w"
-    ];
-  };
   programs.firefox.enable = true;
   # programs.appimage.enable = true;
   environment.systemPackages = with pkgs; [
@@ -37,7 +25,7 @@
     git
     ghostty
     gparted
-    sublime4
     nautilus
+    neovim
   ];
 }
