@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
-    ./locale.nix
+    ../locale/base.nix
     ./user.nix
   ];
   nix.settings.experimental-features = [
