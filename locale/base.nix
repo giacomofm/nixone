@@ -13,6 +13,7 @@
     LC_TIME = "it_IT.UTF-8";
   };
   fonts.packages = with pkgs; [
+    jetbrains-mono
     fira-code
   ];
 }

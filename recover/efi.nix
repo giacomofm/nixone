@@ -1,12 +1,8 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ../locale/base.nix
     ./desktop.nix
     ./user.nix
-    # With also
-    ./shares.nix
-    ./disk-tera.nix
-    ./nordvpn.nix
   ];
   nix.settings.experimental-features = [
     "nix-command"
@@ -18,14 +14,12 @@
   boot.loader.systemd-boot.editor = false;
   # Network
   networking = {
-    hostName = "desknix";
+    hostName = "recover";
     extraHosts = ''
       127.0.0.1 www.sublimetext.com
       127.0.0.1 sublimetext.com
     '';
   };
-  # Docker
-  virtualisation.docker.enable = true;
   # App
   nixpkgs.config = { 
     allowUnfree = true;
@@ -33,24 +27,14 @@
       "openssl-1.1.1w"
     ];
   };
-  # programs.appimage.enable = true;
   programs.firefox.enable = true;
+  # programs.appimage.enable = true;
   environment.systemPackages = with pkgs; [
     gnome-system-monitor
     git
     ghostty
+    gparted
     sublime4
     nautilus
-    ffmpeg
-    vlc
-    gparted
-    loupe
-    input-remapper
-    hydrapaper
-    ffmpegthumbnailer     # https://wiki.nixos.org/wiki/Thumbnails
-    gdk-pixbuf            # https://wiki.nixos.org/wiki/Thumbnails
-  ];
-  environment.pathsToLink = [
-    "share/thumbnailers"  # https://wiki.nixos.org/wiki/Thumbnails
   ];
 }
