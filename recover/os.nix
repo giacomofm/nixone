@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
     ../locale/base.nix
-#    ./uefi.nix
     ./desktop.nix
     ./user.nix
   ];
@@ -9,6 +8,13 @@
     "nix-command"
     "flakes"
   ];
+  # Boot MBR
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sda";
+  # Boot EFI
+#  boot.loader.efi.canTouchEfiVariables = true;
+#  boot.loader.systemd-boot.enable = true;
+#  boot.loader.systemd-boot.editor = false;
   # Network
   networking = {
     hostName = "recover";
