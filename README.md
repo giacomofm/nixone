@@ -44,6 +44,32 @@ Alla fine password per l'utente:
 
 `reboot`
 
+## Installazione (MBR - Legacy Boot)
+```console
+parted /dev/sda -- mklabel msdos
+parted /dev/sda -- mkpart primary 1MB -8GB
+parted /dev/sda -- set 1 boot on
+parted /dev/sda -- mkpart primary linux-swap -8GB 100%
+
+mkfs.ext4 -L nixos /dev/sda1
+mkswap -L swap /dev/sda2
+
+mount /dev/disk/by-label/nixos /mnt
+
+#...Preparing...
+```
+
+# NixOS WSL
+
+[NixOS-WSL](https://github.com/nix-community/NixOS-WSL) 
+
+```console
+sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
+sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/main.tar.gz nixos-wsl
+```
+
+# Extra
+
 ## Edit
 
 Per aggiungere i permessi di scrittura:  
@@ -67,13 +93,4 @@ sudo nixos-rebuild switch --upgrade
 ```console
 cd /etc/nixos/nixone && git pull
 git add . && git commit -m "Update" && git push
-```
-
-# NixOS WSL
-
-[NixOS-WSL](https://github.com/nix-community/NixOS-WSL) 
-
-```console
-sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
-sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/main.tar.gz nixos-wsl
 ```
