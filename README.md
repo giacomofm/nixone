@@ -4,7 +4,7 @@
 [NixOS](https://nixos.org/manual/nixos/stable/)  
 [Appendix A. Configuration Options](https://nixos.org/manual/nixos/stable/options)
 
-## Installazione
+## Installazione (UEFI)
 
 `sudo su`
 
@@ -23,10 +23,9 @@ mkfs.ext4 -L nixos /dev/sdX1
 mkswap -L swap /dev/sdX2
 mkfs.fat -F 32 -n boot /dev/sdX3
 ```
-### Pre-Installing
+### Mounting
 ```console
 mount /dev/disk/by-label/nixos /mnt
-# (for UEFI)
 mkdir -p /mnt/boot
 mount -o umask=077 /dev/disk/by-label/boot /mnt/boot
 ```
