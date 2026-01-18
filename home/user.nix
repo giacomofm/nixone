@@ -15,6 +15,7 @@ in {
       qbittorrent
       spotify
       httpie
+      gcc # x Rust
     ];
   };
   services.usbmuxd.enable = true;
@@ -50,6 +51,9 @@ in {
           echo '> git add . && git commit -m "Update" && git push'
           echo '> sudo nixos-rebuild switch --upgrade'
         }
+
+        # Rust extra:
+        . "$HOME/.cargo/env"
       '';
     };
     programs.git = {
