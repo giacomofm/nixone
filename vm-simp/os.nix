@@ -8,8 +8,11 @@
     "nix-command"
     "flakes"
   ];
-  # VM
-  virtualisation.vmware.guest.enable = true;
+  # VMware
+  # virtualisation.vmware.guest.enable = true;
+  # VirtualBox
+  # virtualisation.virtualbox.guest.enable = true;
+  # virtualisation.virtualbox.guest.dragAndDrop = true;
   # Boot
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;

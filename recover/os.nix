@@ -17,6 +17,11 @@
 #  boot.loader.systemd-boot.editor = false;
   # Network
   networking.hostName = "recover";
+  # VMware
+  # virtualisation.vmware.guest.enable = true;
+  # VirtualBox
+  # virtualisation.virtualbox.guest.enable = true;
+  # virtualisation.virtualbox.guest.dragAndDrop = true;
   # App
   programs.firefox.enable = true;
   # programs.appimage.enable = true;
