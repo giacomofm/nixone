@@ -26,11 +26,13 @@
   programs.firefox.enable = true;
   # programs.appimage.enable = true;
   environment.systemPackages = with pkgs; [
+    gnome-terminal
     gnome-system-monitor
     gnome-text-editor
     git
     ghostty
     gparted
     nautilus
+    fastfetch
   ];
 }

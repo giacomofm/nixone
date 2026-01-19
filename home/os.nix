@@ -41,6 +41,7 @@
     gnome-system-monitor
     git
     ghostty
+    fastfetch
     sublime4
     nautilus
     ffmpeg
