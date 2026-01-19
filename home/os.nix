@@ -28,7 +28,6 @@
   virtualisation.docker.enable = true;
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "juk" ];
   # App
   nixpkgs.config = { 
     allowUnfree = true;

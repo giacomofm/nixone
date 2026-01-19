@@ -27,10 +27,10 @@
   # programs.appimage.enable = true;
   environment.systemPackages = with pkgs; [
     gnome-system-monitor
+    gnome-text-editor
     git
     ghostty
     gparted
     nautilus
-    neovim
   ];
 }
