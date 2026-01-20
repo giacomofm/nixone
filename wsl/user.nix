@@ -43,6 +43,13 @@ in
         echo '> sudo nixos-rebuild switch --upgrade'
         echo '> (wsl --shutdown)'
       }
+      luxup() {
+        cd /mnt/c/Users/GiacomoFraron/Documents/LUX/demo
+        echo '> docker compose up -d'
+        echo '> docker compose down'
+        echo 'Pub eventi:'
+        echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE]'
+      }
       '';
     };
     programs.git = {
