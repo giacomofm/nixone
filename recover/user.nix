@@ -5,7 +5,8 @@
     description = "Juk";
     extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
-#      vlc
+      vlc
+      loupe
     ];
   };
 }
