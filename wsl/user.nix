@@ -15,7 +15,12 @@ in
       maven
       spring-boot-cli
       httpie
+      kubectl
+      kubelogin
       openshift
+      azure-cli
+      ripgrep # from Mattia
+      fd      # from Mattia
     ];
   };
   home-manager.users.nixos = { pkgs, ... }: {
