@@ -10,16 +10,17 @@
   # Docker
   virtualisation.docker.enable = true;
   # App
-  nixpkgs.config = { 
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "openssl-1.1.1w"
-    ];
-  };
+  # nixpkgs.config = { 
+  #   allowUnfree = true;
+  #   permittedInsecurePackages = [
+  #     "openssl-1.1.1w"
+  #   ];
+  # };
+  programs.appimage.enable = true;
   environment.systemPackages = with pkgs; [
     git
     ffmpeg
     # ghostty
-    sublime4
+    # sublime4
   ];
 }
