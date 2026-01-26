@@ -18,7 +18,7 @@ in {
       gcc # x Rust
     ];
   };
-  services.usbmuxd.enable = true;
+  services.usbmuxd.enable = true; # x iPhone
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;                 # Open ports in the firewall for Steam Remote Play
@@ -55,6 +55,24 @@ in {
         # Rust extra:
         . "$HOME/.cargo/env"
       '';
+    };
+    programs.starship = {
+      enable = true;
+      enableBashIntegration = true;
+    };
+    programs.ghostty = {
+      enable = true;
+      settings = {
+        font-family = "JetBrains Mono";
+        keybind = [
+          "ctrl+super+minus=new_split:down"
+          "ctrl+super+equal=new_split:right"
+          "ctrl+super+up=goto_split:up"
+          "ctrl+super+down=goto_split:down"
+          "ctrl+super+right=goto_split:right"
+          "ctrl+super+left=goto_split:left"
+        ];
+      };
     };
     programs.git = {
       enable = true;
