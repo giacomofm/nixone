@@ -53,9 +53,13 @@ in
         echo '> docker compose up -d'
         echo '> docker compose down'
         echo 'Pub eventi:'
-        echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE]'
+        echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE (1 msg x line)]'
       }
       '';
+    };
+    programs.starship = {
+      enable = true;
+      enableBashIntegration = true;
     };
     programs.git = {
       enable = true;
