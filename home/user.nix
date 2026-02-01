@@ -59,6 +59,7 @@ in {
     programs.starship = {
       enable = true;
       enableBashIntegration = true;
+      settings.username.show_always = true;
     };
     programs.ghostty = {
       enable = true;
@@ -78,6 +79,7 @@ in {
       enable = true;
       settings.user.name  = "Giacomo Fraron";
       settings.user.email = "giacomo.fraron@gmail.com";
+      settings.init.defaultBranch = "main";
     };
     dconf.settings = {
       "org/gnome/desktop/wm/keybindings" = {
