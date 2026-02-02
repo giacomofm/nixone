@@ -48,10 +48,15 @@ in
         echo '> sudo nixos-rebuild switch --upgrade'
         echo '> (wsl --shutdown)'
       }
-      luxup() {
-        cd /mnt/c/Users/GiacomoFraron/Documents/LUX/demo
-        echo '> docker compose up -d'
-        echo '> docker compose down'
+
+      alias luxup='localup LUX'
+      alias damup='localup LookDAM'
+      alias dcu='docker compose up -d'
+      alias dcd='docker compose down'
+      localup() {
+        cd "/mnt/c/Users/GiacomoFraron/OneDrive - Avvale S.p.A/Documenti/Progetti/$1/local"
+        echo '> dcu (aka: docker compose up -d )'
+        echo '> dcd (aka: docker compose down  )'
         echo 'Pub eventi:'
         echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE (1 msg x line)]'
       }
@@ -65,6 +70,7 @@ in
       enable = true;
       settings.user.name  = "Giacomo Fraron";
       settings.user.email = "giacomo.fraron@avvale.com";
+      settings.init.defaultBranch = "main";
     };
   };
 }
