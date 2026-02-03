@@ -68,6 +68,12 @@ sudo nix-channel --add https://channels.nixos.org/nixos-unstable nixos
 sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/main.tar.gz nixos-wsl
 ```
 
+## .wslconfig
+```
+[wsl2]
+networkingMode=mirrored
+```
+
 # Extra
 
 ## Edit

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [
     ../locale/base.nix
     ./user.nix
@@ -7,6 +7,8 @@
     "nix-command"
     "flakes"
   ];
+  # WSL
+  # wsl.wslConf.network.generateHosts = false;
   # Docker
   virtualisation.docker.enable = true;
   # App
