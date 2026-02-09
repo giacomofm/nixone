@@ -53,9 +53,14 @@ in {
         }
 
         # Docker Utils:
-        alias ddrop='docker system prune -a --volumes'
         alias dcu='docker compose up -d'
         alias dcd='docker compose down'
+        alias ddrop='docker system prune -a --volumes'
+        dtmprun() {
+          docker build -t temp-image .
+          docker run --rm temp-image
+          # docker rmi temp-image
+        }
 
         # Rust extra:
         . "$HOME/.cargo/env"
