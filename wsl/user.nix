@@ -67,7 +67,10 @@ in
       enable = true;
       enableBashIntegration = true;
       settings = {
-        directory = { truncation_length = 5; };
+        directory = { 
+          truncation_length = 5; 
+          truncation_symbol = ".../";
+        };
       };
     };
     programs.git = {
