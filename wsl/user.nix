@@ -51,7 +51,14 @@ in
       }
 
       # Java Utils:
-      alias mvnrun='mvn clean spring-boot:run -Dspring-boot.run.profiles=dev'
+      javarun() {
+        echo 'run app.jar profiles=dev'
+        java -jar target/app.jar --spring.profiles.active=dev
+      }
+      mvnrun() {
+        echo 'clean run profiles=dev'
+        mvn clean spring-boot:run -Dspring-boot.run.profiles=dev
+      }
 
       # Docker Utils:
       alias dcu='docker compose up -d'
