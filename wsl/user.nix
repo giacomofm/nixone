@@ -66,6 +66,9 @@ in
     programs.starship = {
       enable = true;
       enableBashIntegration = true;
+      settings = {
+        directory = { truncation_length = 5; };
+      };
     };
     programs.git = {
       enable = true;
