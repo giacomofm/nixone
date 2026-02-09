@@ -50,14 +50,21 @@ in
         echo '> (wsl --shutdown)'
       }
 
-      alias luxup='localup LUX'
-      alias damup='localup LookDAM'
+      # Java Utils:
+      alias mvnrun='mvn clean spring-boot:run -Dspring-boot.run.profiles=dev'
+
+      # Docker Utils:
       alias dcu='docker compose up -d'
       alias dcd='docker compose down'
+      alias ddrop='docker system prune -a --volumes'
+
+      alias luxup='localup LUX'
+      alias damup='localup LookDAM'
       localup() {
         cd "/mnt/c/Users/GiacomoFraron/OneDrive - Avvale S.p.A/Documenti/Progetti/$1/local"
         echo '> dcu (aka: docker compose up -d )'
         echo '> dcd (aka: docker compose down  )'
+        echo '> ddrop (aka: docker system prune -a --volumes)'
         echo 'Pub eventi:'
         echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE (1 msg x line)]'
       }

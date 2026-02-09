@@ -52,6 +52,11 @@ in {
           echo '> sudo nixos-rebuild switch --upgrade'
         }
 
+        # Docker Utils:
+        alias ddrop='docker system prune -a --volumes'
+        alias dcu='docker compose up -d'
+        alias dcd='docker compose down'
+
         # Rust extra:
         . "$HOME/.cargo/env"
       '';
@@ -59,7 +64,12 @@ in {
     programs.starship = {
       enable = true;
       enableBashIntegration = true;
-      settings.username.show_always = true;
+      settings = {
+        directory = { 
+          truncation_length = 5; 
+          truncation_symbol = ".../";
+        };
+      };
     };
     programs.ghostty = {
       enable = true;
