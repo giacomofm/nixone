@@ -71,7 +71,8 @@ sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/main.t
 ## .wslconfig
 ```
 [wsl2]
-networkingMode=mirrored
+#networkingMode=mirrored
+localhostForwarding=true
 ```
 
 # Extra

@@ -21,6 +21,7 @@ in
       azure-cli
       ripgrep # from Mattia
       fd      # from Mattia
+      freelens-bin
     ];
   };
   home-manager.users.nixos = { pkgs, ... }: {
