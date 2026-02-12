@@ -50,6 +50,8 @@ in
         echo '> (wsl --shutdown)'
       }
 
+      alias echoPATH="echo $PATH | tr ':' '\n'"
+
       # Java Utils:
       javarun() {
         echo 'run app.jar profiles=dev'
