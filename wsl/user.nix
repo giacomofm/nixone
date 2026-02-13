@@ -66,6 +66,14 @@ in
       alias dcu='docker compose up -d'
       alias dcd='docker compose down'
       alias ddrop='docker system prune -a --volumes'
+      dls() {
+        echo "Images: "
+        docker image ls
+        echo "Containers: "
+        docker container ls
+        echo "Volumes: "
+        docker volume ls
+      }
       dtmprun() {
         docker build -t temp-image .
         if [ -z "$1" ]; then
@@ -76,6 +84,7 @@ in
         # docker rmi temp-image
       }
 
+      # Projects Utils:
       alias luxup='localup LUX'
       alias damup='localup LookDAM'
       localup() {
