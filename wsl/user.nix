@@ -68,7 +68,11 @@ in
       alias ddrop='docker system prune -a --volumes'
       dtmprun() {
         docker build -t temp-image .
-        docker run --rm temp-image
+        if [ -z "$1" ]; then
+          docker run --rm temp-image
+        else
+          docker run --rm -p $1:$1 temp-image
+        fi
         # docker rmi temp-image
       }
 
