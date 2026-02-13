@@ -67,11 +67,11 @@ in
       alias dcd='docker compose down'
       alias ddrop='docker system prune -a --volumes'
       dls() {
-        echo "Images: "
+        echo "Images:"
         docker image ls
-        echo "Containers: "
+        echo -e "\n\nContainers:"
         docker container ls
-        echo "Volumes: "
+        echo -e "\n\nVolumes: "
         docker volume ls
       }
       dtmprun() {
