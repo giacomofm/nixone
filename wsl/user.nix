@@ -28,6 +28,7 @@ in
     home.stateVersion = "25.05";
     home.shellAliases = {
       buuu = "shutdown now";
+      http = "http -v";
     };
     home.sessionVariables = {
       JAVA_HOME = "${java-version}";
