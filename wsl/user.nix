@@ -35,65 +35,76 @@ in
     programs.bash = {
       enable = true;
       bashrcExtra = builtins.replaceStrings [ "\r" ] [ "" ] ''
-      fifi() {
-        sudo find /home /mnt/c/Users/GiacomoFraron -type f -iname "$1"
-      }
-      fidi() {
-        sudo find /home /mnt/c/Users/GiacomoFraron -type d -iname "$1"
-      }
-      nixone() {
-        cd /mnt/c/Users/GiacomoFraron/Documents/NixOS/nixone
-        git pull
-        echo '> sudo nixos-rebuild test'
-        echo '> git add . && git commit -m "Update" && git push'
-        echo '> sudo nixos-rebuild switch --upgrade'
-        echo '> (wsl --shutdown)'
-      }
+fifi() {
+  sudo find /home /mnt/c/Users/GiacomoFraron -type f -iname "$1"
+}
+fidi() {
+  sudo find /home /mnt/c/Users/GiacomoFraron -type d -iname "$1"
+}
+fitx() {
+  if [ $# -eq 1 ]; then
+    rg -i --regexp "$1" .
+  elif [ $# -eq 2 ]; then
+    rg -i --regexp "$1" $2
+  elif [ $# -eq 3 ]; then
+    rg --type $3 -i --regexp "$1" $2
+  else
+    echo "fitx REGEX_PATTERN [PATH] [FILE_TYPE]"
+  fi
+}
+nixone() {
+  cd /mnt/c/Users/GiacomoFraron/Documents/NixOS/nixone
+  git pull
+  echo '> sudo nixos-rebuild test'
+  echo '> git add . && git commit -m "Update" && git push'
+  echo '> sudo nixos-rebuild switch --upgrade'
+  echo '> (wsl --shutdown)'
+}
 
-      alias echoPATH="echo $PATH | tr ':' '\n'"
+alias echoPATH="echo $PATH | tr ':' '\n'"
 
-      # Java Utils:
-      javarun() {
-        echo 'run app.jar profiles=dev'
-        java -jar target/app.jar --spring.profiles.active=dev
-      }
-      mvnrun() {
-        echo 'clean run profiles=dev'
-        mvn clean spring-boot:run -Dspring-boot.run.profiles=dev
-      }
+# Java Utils:
+javarun() {
+  echo 'run app.jar profiles=dev'
+  java -jar target/app.jar --spring.profiles.active=dev
+}
+mvnrun() {
+  echo 'clean run profiles=dev'
+  mvn clean spring-boot:run -Dspring-boot.run.profiles=dev
+}
 
-      # Docker Utils:
-      alias dcu='docker compose up -d'
-      alias dcd='docker compose down'
-      alias ddrop='docker system prune -a --volumes'
-      dls() {
-        echo "Images:"
-        docker image ls
-        echo -e "\n\nContainers:"
-        docker container ls
-        echo -e "\n\nVolumes: "
-        docker volume ls
-      }
-      dtmprun() {
-        docker build -t temp-image .
-        if [ -z "$1" ]; then
-          docker run --rm temp-image
-        else
-          docker run --rm -p $1:$1 temp-image
-        fi
-        # docker rmi temp-image
-      }
+# Docker Utils:
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias ddrop='docker system prune -a --volumes'
+dls() {
+  echo "Images:"
+  docker image ls
+  echo -e "\n\nContainers:"
+  docker container ls
+  echo -e "\n\nVolumes: "
+  docker volume ls
+}
+dtmprun() {
+  docker build -t temp-image .
+  if [ -z "$1" ]; then
+    docker run --rm temp-image
+  else
+    docker run --rm -p $1:$1 temp-image
+  fi
+  # docker rmi temp-image
+}
 
-      # Projects Utils:
-      alias luxup='localup LUX'
-      alias damup='localup LookDAM'
-      localup() {
-        cd "/mnt/c/Users/GiacomoFraron/OneDrive - Avvale S.p.A/Documenti/Progetti/$1/local"
-        echo '> dcu (aka: docker compose up -d )'
-        echo '> dcd (aka: docker compose down  )'
-        echo 'Pub eventi:'
-        echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE (1 msg x line)]'
-      }
+# Projects Utils:
+alias luxup='localup LUX'
+alias damup='localup LookDAM'
+localup() {
+  cd "/mnt/c/Users/GiacomoFraron/OneDrive - Avvale S.p.A/Documenti/Progetti/$1/local"
+  echo '> dcu (aka: docker compose up -d )'
+  echo '> dcd (aka: docker compose down  )'
+  echo 'Pub eventi:'
+  echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE (1 msg x line)]'
+}
       '';
     };
     programs.starship = {
