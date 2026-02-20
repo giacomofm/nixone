@@ -45,6 +45,7 @@
     fastfetch
     sublime4
     nautilus
+    httpie
     ffmpeg
     vlc
     gparted

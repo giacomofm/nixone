@@ -14,7 +14,7 @@ in {
       jetbrains-toolbox
       qbittorrent
       spotify
-      httpie
+      ripgrep
       gcc # x Rust
     ];
   };
@@ -44,6 +44,17 @@ in {
         fidi() {
           sudo find / -path /nix/store -prune -o -type d -iname "$1"
         }
+        fitx() {
+          if [ $# -eq 1 ]; then
+            rg -i --regexp "$1" .
+          elif [ $# -eq 2 ]; then
+            rg -i --regexp "$1" $2
+          elif [ $# -eq 3 ]; then
+            rg --type $3 -i --regexp "$1" $2
+          else
+            echo "fitx REGEX_PATTERN [PATH] [FILE_TYPE]"
+          fi
+        }
         nixone() {
           cd /etc/nixos/nixone
           git pull
@@ -56,10 +67,22 @@ in {
         alias dcu='docker compose up -d'
         alias dcd='docker compose down'
         alias ddrop='docker system prune -a --volumes'
+        dls() {
+          echo "Images:"
+          docker image ls
+          echo -e "\n\nContainers:"
+          docker container ls
+          echo -e "\n\nVolumes: "
+          docker volume ls
+        }
         dtmprun() {
           docker build -t temp-image .
-          docker run --rm temp-image
-          # docker rmi temp-image
+          if [ -z "$1" ]; then
+            docker run --rm temp-image
+          else
+            docker run --rm -p $1:$1 temp-image
+          fi
+          echo "docker rmi temp-image"
         }
 
         # Rust extra:
