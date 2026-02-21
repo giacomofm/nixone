@@ -15,7 +15,7 @@ in {
     SupplementaryGroups = [ "video" "render" ];
   };
   services.miniupnpd = {
-    enable = on_jellyfin;
+    # enable = on_jellyfin;
     externalInterface = "enp4s0";
     internalIPs = [ "enp4s0" ];
   };

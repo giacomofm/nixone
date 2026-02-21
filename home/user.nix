@@ -9,7 +9,7 @@ in {
     uid = 1000;
     isNormalUser = true;
     description = "Juk";
-    extraGroups = [ "wheel" "networkmanager" "docker" "vboxusers" ];
+    extraGroups = [ "wheel" "networkmanager" "input" "docker" "vboxusers" ];
     packages = with pkgs; [
       jetbrains-toolbox
       qbittorrent
@@ -17,7 +17,6 @@ in {
       ripgrep
       gcc # x Rust
       obsidian
-      clipse
     ];
   };
   services.usbmuxd.enable = true; # x iPhone
