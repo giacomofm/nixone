@@ -16,6 +16,7 @@ in {
       spotify
       ripgrep
       gcc # x Rust
+      obsidian
     ];
   };
   services.usbmuxd.enable = true; # x iPhone
