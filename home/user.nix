@@ -17,6 +17,7 @@ in {
       ripgrep
       gcc # x Rust
       obsidian
+      clipse
     ];
   };
   services.usbmuxd.enable = true; # x iPhone
