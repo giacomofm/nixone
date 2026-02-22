@@ -1,9 +1,10 @@
 { pkgs, ... }: {
   imports = [
     ../locale/base.nix
-    ./desktop.nix
+    ../desktop/gnome.nix
     ./user.nix
     # With also
+    ./nvidia.nix
     ./shares.nix
     ./disk-tera.nix
     ./nordvpn.nix
@@ -23,6 +24,15 @@
       127.0.0.1 www.sublimetext.com
       127.0.0.1 sublimetext.com
     '';
+  };
+  # PipeWire https://wiki.nixos.org/wiki/PipeWire
+  services.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    pulse.enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
   };
   # Docker
   virtualisation.docker.enable = true;

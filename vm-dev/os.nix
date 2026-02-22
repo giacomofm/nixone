@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ../locale/base.nix
-    ./desktop.nix
+    ../desktop/gnome.nix
     ./user.nix
   ];
   nix.settings.experimental-features = [
@@ -9,7 +9,8 @@
     "flakes"
   ];
   # VM
-  virtualisation.vmware.guest.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.dragAndDrop = true;
   # Boot
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
@@ -22,10 +23,8 @@
       127.0.0.1 sublimetext.com
     '';
   };
-  # Docker
-  virtualisation.docker.enable = true;
   # App
-  nixpkgs.config = { 
+  nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
       "openssl-1.1.1w"

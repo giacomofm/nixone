@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ../locale/base.nix
-    ./desktop.nix
+    ../desktop/gnome.nix
     ./user.nix
   ];
   nix.settings.experimental-features = [
