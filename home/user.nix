@@ -104,6 +104,7 @@ in {
       enable = true;
       settings = {
         font-family = "JetBrains Mono";
+        background-opacity = 0.8;
         keybind = [
           "ctrl+super+minus=new_split:down"
           "ctrl+super+equal=new_split:right"

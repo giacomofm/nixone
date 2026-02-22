@@ -95,9 +95,13 @@ sudo nixos-rebuild switch --upgrade
 `nixos-rebuild list-generations`  
 `sudo nix-collect-garbage -d`
 
-## Git Utils
+## NixOne
 
 ```console
-cd /etc/nixos/nixone && git pull
-git add . && git commit -m "Update" && git push
+nixone() {
+  cd /etc/nixos/nixone && git pull
+  echo '> sudo nixos-rebuild test'
+  echo '> git add . && git commit -m "Update" && git push'
+  echo '> sudo nixos-rebuild switch --upgrade'
+}
 ```
