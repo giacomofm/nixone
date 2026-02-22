@@ -48,13 +48,10 @@
   # programs.appimage.enable = true;
   programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
-    gnome-terminal
-    gnome-system-monitor
     git
     ghostty
     fastfetch
     sublime4
-    nautilus
     httpie
     ffmpeg
     vlc

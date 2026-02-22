@@ -35,10 +35,8 @@
   environment.systemPackages = with pkgs; [
     git
     ffmpeg
-    gnome-system-monitor
     ghostty
     sublime4
-    nautilus
     loupe
     ffmpegthumbnailer # https://wiki.nixos.org/wiki/Thumbnails
     gdk-pixbuf

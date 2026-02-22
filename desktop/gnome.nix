@@ -15,4 +15,10 @@
     AllowHybridSleep=no
     AllowSuspendThenHibernate=no
   '';
+  environment.systemPackages = with pkgs; [
+    gnome-terminal
+    gnome-system-monitor
+    gnome-text-editor
+    nautilus
+  ];
 }
