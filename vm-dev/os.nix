@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   imports = [
     ../locale/base.nix
-    ../desktop/hyprland.nix
+    ../desktop/hyprland.nix # more todo per farlo girare
     ./user.nix
   ];
   nix.settings.experimental-features = [
