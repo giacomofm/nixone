@@ -106,6 +106,17 @@ localup() {
   echo 'Pub eventi:'
   echo '> docker exec -i broker /opt/kafka/bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic [TOPIC] < [FILE (1 msg x line)]'
 }
+
+# ERG Utils
+ergrun() {
+  oc create job test --from=cronjob/hr-integration -n erg-hr
+  echo "Job up sleep 10 prima dei log..."
+  sleep 10
+  echo -e "\n\nLogs: "
+  echo "> oc logs -f $(oc get pod -n erg-hr | rg test | awk '{print $1}')"
+  oc logs -f $(oc get pod -n erg-hr | rg test | awk '{print $1}')
+  echo -e "\n\n> oc delete job test -n erg-hr"
+}
       '';
     };
     programs.starship = {
