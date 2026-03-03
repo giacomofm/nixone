@@ -5,12 +5,19 @@ in {
   imports = [
     (import "${home-manager}/nixos")
   ];
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "openssl-1.1.1w"
+    ];
+  };
   users.users.juk = {
     uid = 1000;
     isNormalUser = true;
     description = "Juk";
     extraGroups = [ "wheel" "networkmanager" "input" "docker" "vboxusers" ];
     packages = with pkgs; [
+      sublime4
       jetbrains-toolbox
       qbittorrent
       spotify

@@ -14,6 +14,7 @@
     "flakes"
   ];
   # Boot
+  boot.loader.timeout = 3;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
@@ -30,19 +31,12 @@
   # VirtualBox
   virtualisation.virtualbox.host.enable = true;
   # App
-  nixpkgs.config = { 
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "openssl-1.1.1w"
-    ];
-  };
   # programs.appimage.enable = true;
   programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
     git
     ghostty
     fastfetch
-    sublime4
     httpie
     ffmpeg
     vlc
