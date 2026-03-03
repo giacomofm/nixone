@@ -8,6 +8,9 @@ in
   [
     (import "${home-manager}/nixos")
   ];
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+    "github-copilot-cli"
+  ];
   users.users.nixos = {
     extraGroups = [ "wheel" "networkmanager" "docker" ];
     packages = with pkgs; [
@@ -20,6 +23,7 @@ in
       azure-cli
       k9s
       fd      # from Mattia
+      github-copilot-cli # UnFree
     ];
   };
   home-manager.users.nixos = { pkgs, ... }: {
