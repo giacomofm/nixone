@@ -14,16 +14,16 @@ in {
   systemd.services.jellyfin.serviceConfig = {
     SupplementaryGroups = [ "video" "render" ];
   };
-  services.miniupnpd = {
-    # enable = on_jellyfin;
-    externalInterface = "enp4s0";
-    internalIPs = [ "enp4s0" ];
-  };
+  # services.miniupnpd = {
+  #   enable = on_jellyfin;
+  #   externalInterface = "enp4s0";
+  #   internalIPs = [ "enp4s0" ];
+  # };
   # Network
   networking.firewall = {
     enable = true;
     allowPing = true;
-    allowedTCPPorts = [ 8080 ] ++ (if on_ftp then [ 21 ] else []);
+    allowedTCPPorts = [ 8080 ] ++ (if on_ftp then [ 21 ] else []) ++ (if on_jellyfin then [ 8096 8920 ] else []);
     allowedTCPPortRanges = [] ++ (if on_ftp then [ { from = 56250; to   = 56260; } ] else []);
     allowedUDPPorts = [] ++ (if on_jellyfin then [ 1900 7359 ] else []);
   };
