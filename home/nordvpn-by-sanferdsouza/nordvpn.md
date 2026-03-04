@@ -4,10 +4,10 @@
 
 *Upstream documentation:* <https://github.com/NordSecurity/nordvpn-linux>
 
-NordVPN is a paid virtual private network (VPN) service.
-While the service itself is closed-source, the Linux client is open-source and
-licensed under the GNU General Public License version 3 (GPLv3). A minimal
-configuration in NixOS looks like this:
+NordVPN offers a paid virtual private network (VPN) service.
+The service operates as closed-source,
+but the Linux client uses open-source code licensed under GPLv3.
+A minimal configuration in NixOS appears as follows:
 
 ```nix
 {
@@ -17,31 +17,33 @@ configuration in NixOS looks like this:
 }
 ```
 
-Note that if you're using firewall then
-`networking.firewall.checkReversePath` can either be `"loose"` or `false`.
-NordVPN provides a `kill-switch` feature that drops all packets not associated
-with the VPN connection.
+When using a firewall, set `networking.firewall.checkReversePath` to `"loose"` or `false`.
+NordVPN includes a `kill-switch` feature that blocks all packets not associated with the VPN connection.
 
 Additionally, add your user to the `nordvpn` group.
 
 ```nix
-users.users.YOUR-USER = {
-    ...
+{
+  users.users.yourUser = {
+    #..
     extraGroups = [
-      ...
+      #..
       "nordvpn"
     ];
-};
+  };
+}
 ```
 
 If you prefer to use your own user and group, you can do so using
 
 ```nix
-services.nordvpn.user = USER;
-services.nordvpn.group = GROUP;
+{
+  services.nordvpn.user = "SOME-USER";
+  services.nordvpn.group = "SOME-GROUP";
+}
 ```
 
-Here are some helpful nordvpn cli commands
+NordVPN provides several useful CLI commands, including:
 
 ```bash
 nordvpn login  # Log in using an OAuth URL
@@ -53,6 +55,11 @@ nordvpn set technology openvpn  # Switch to OpenVPN technology
 nordvpn c  # Reconnect after changing technology
 ```
 
-**Disclaimer:** Currently meshnet is not supported on NixOS.
+Additionally, if you prefer to use the friendly GUI,
 
-Contributions are welcome!
+```bash
+nordvpn-gui
+```
+
+**Disclaimer:** NixOS currently does not support meshnet.
+Contributions welcome!
