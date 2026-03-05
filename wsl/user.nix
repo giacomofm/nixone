@@ -70,12 +70,14 @@ alias echoPATH="echo $PATH | tr ':' '\n'"
 
 # Java Utils:
 javarun() {
-  echo 'run app.jar profiles=dev'
-  java -jar target/app.jar --spring.profiles.active=dev
+  if [ -z "$1" ]; then profile='dev'; else profile=$1; fi
+  echo "run app.jar profiles=$profile"
+  java -jar target/app.jar --spring.profiles.active=$profile
 }
 mvnrun() {
-  echo 'clean run profiles=dev'
-  mvn clean spring-boot:run -Dspring-boot.run.profiles=dev
+  if [ -z "$1" ]; then profile='dev'; else profile=$1; fi
+  echo "clean run profiles=$profile"
+  mvn clean spring-boot:run -Dspring-boot.run.profiles=$profile
 }
 
 # Docker Utils:
