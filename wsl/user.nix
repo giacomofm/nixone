@@ -29,6 +29,7 @@ in
   home-manager.users.nixos = { pkgs, ... }: {
     home.stateVersion = "25.05";
     home.shellAliases = {
+      ping = "ping -c 4";
       buuu = "shutdown now";
       http = "http -v";
       nixtest = "sudo nixos-rebuild test";

@@ -38,7 +38,9 @@ in {
     home.stateVersion = "25.05";
     # home.packages = [ pkgs.atool pkgs.httpie ];
     home.shellAliases = {
+      ping = "ping -c 4";
       buuu = "shutdown now";
+      http = "http -v";
       nixtest = "sudo nixos-rebuild test";
       nixupgr = "sudo nixos-rebuild switch --upgrade";
       nn = "nordvpn";
