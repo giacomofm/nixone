@@ -1,6 +1,7 @@
 # NordVPN install from source:
 # https://github.com/NordSecurity/nordvpn-linux/issues/355#issuecomment-2486424885
 # --> https://github.com/NixOS/nixpkgs/pull/406725 <--
+# --> https://github.com/NixOS/nixpkgs/pull/477174 <--
 
 { config, pkgs, lib, ... }: {
   nixpkgs.overlays = [
