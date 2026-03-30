@@ -120,8 +120,8 @@ ergrun() {
   echo -e "\nSleep 10 prima dei log..."
   sleep 10
   echo -e "\nLogs: "
-  oc logs -f $(oc get pod -n erg-hr | rg test | awk '{print $1}')
-  echo -e "\n\n> oc logs -f $(oc get pod -n erg-hr | rg test | awk '{print $1}')"
+  oc logs -f $(oc get pod -n erg-hr | rg test | awk '{print $1}') -n erg-hr
+  echo -e "\n\n> oc logs -f $(oc get pod -n erg-hr | rg test | awk '{print $1}') -n erg-hr"
   echo "> oc delete job test -n erg-hr"
 }
       '';
