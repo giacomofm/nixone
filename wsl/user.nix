@@ -22,8 +22,9 @@ in
       openshift
       azure-cli
       k9s
-      fd      # from Mattia
-      github-copilot-cli # UnFree
+      fd                  # from Mattia
+      github-copilot-cli  # UnFree
+      nodejs
     ];
   };
   home-manager.users.nixos = { pkgs, ... }: {
