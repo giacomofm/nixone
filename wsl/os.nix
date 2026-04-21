@@ -8,7 +8,9 @@
     "flakes"
   ];
   # WSL
-  # wsl.wslConf.network.generateHosts = false;
+  # wsl.wslConf.network.generateHosts = false;      # cat /etc/hosts
+  # wsl.wslConf.network.generateResolvConf = false; # cat /etc/resolv.conf
+  # networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
   # Docker
   virtualisation.docker.enable = true;
   # App
