@@ -2,58 +2,62 @@
   callPackage,
   fetchFromGitHub,
   lib,
+  nix-update-script,
   symlinkJoin,
 }:
 let
-  version = "4.3.1";
+  version = "4.6.0";
 
-  commonArgs = {
-    myVersion = version;
+  common = {
+    inherit version;
 
-    mySrc = fetchFromGitHub {
+    src = fetchFromGitHub {
       owner = "NordSecurity";
       repo = "nordvpn-linux";
       tag = version;
-      hash = "sha256-o9+9IiXV2CS/Zj3bDg8EJn/UidwA6Fwn4ySFbwyCp60=";
+      hash = "sha256-Pz0tMy7SZtiF/PXNNa84x8yuNr//IHzFULrwyQcBhwo=";
     };
 
-    myMeta = rec {
-      homepage = "https://github.com/nordsecurity/nordvpn-linux";
-      changelog = "${homepage}/blob/main/contrib/changelog/prod/${version}.md";
+    # rec so that changelog can reference homepage
+    meta = rec {
+      homepage = "https://github.com/NordSecurity/nordvpn-linux";
+      changelog = "${homepage}/releases/tag/${version}";
       license = lib.licenses.gpl3Only;
       maintainers = with lib.maintainers; [ different-error ];
       platforms = lib.platforms.linux;
     };
 
-    myDesktopItemArgs = {
+    desktopItemArgs = {
       categories = [ "Network" ];
-      genericName = "a vpn provider";
+      genericName = "VPN Client";
       icon = "nordvpn";
       type = "Application";
     };
   };
 in
-symlinkJoin rec {
+symlinkJoin {
   pname = "nordvpn";
-  version = commonArgs.myVersion;
-
-  # define these here to override in corresponding nixos module definition.
-  cli = callPackage ./cli.nix commonArgs;
-  gui = callPackage ./gui.nix commonArgs;
+  inherit version;
 
   paths = [
-    cli
-    gui
+    (callPackage ./cli.nix common)
+    (callPackage ./gui.nix common)
   ];
 
-  meta = commonArgs.myMeta // {
-    description = "NordVPN cli and gui applications for Linux.";
+  passthru = {
+    cli = callPackage ./cli.nix common;
+    gui = callPackage ./gui.nix common;
+    updateScript = nix-update-script { };
+  };
+
+  meta = common.meta // {
+    description = "NordVPN client and GUI for Linux";
     longDescription = ''
-      NordVPN cli and gui applications for Linux.
+      NordVPN CLI and GUI applications for Linux.
       This package currently does not support meshnet.
       Additionally, if `networking.firewall.enable = true;`,
       then also set `networking.firewall.checkReversePath = "loose";`.
-      Contributions welcome!
+      The closed-source nordwhisper protocol is also not supported.
     '';
   };
 }

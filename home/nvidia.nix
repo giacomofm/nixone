@@ -6,7 +6,9 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.graphics.enable = true;
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
+    # 1080 supportata solo fino alla versione 580.xx
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_580;
 /*
     # Per una versione specifica (+ commenta riga sopra):
     package = config.boot.kernelPackages.nvidiaPackages.mkDriver {

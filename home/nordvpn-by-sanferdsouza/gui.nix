@@ -1,43 +1,48 @@
 {
-  myDesktopItemArgs,
-  myMeta,
-  mySrc,
-  myVersion,
+  desktopItemArgs,
+  meta,
+  src,
+  version,
 
+  copyDesktopItems,
   flutter,
   lib,
   makeDesktopItem,
+  libx11,
 }:
 flutter.buildFlutterApplication {
   pname = "nordvpn-gui";
-  version = myVersion;
+  inherit src version;
 
-  src = mySrc;
-  sourceRoot = "${mySrc.name}/gui";
+  sourceRoot = "${src.name}/gui";
+
+  buildInputs = [
+    libx11
+  ];
+
+  nativeBuildInputs = [
+    copyDesktopItems
+  ];
 
   pubspecLock = lib.importJSON ./pubspec.lock.json;
 
+  # finds X11 using pkg-config
   patches = [ ./linux-cmake.patch ];
 
   desktopItems = [
     (makeDesktopItem (
-      myDesktopItemArgs
+      desktopItemArgs
       // {
         comment = "NordVPN's GUI to manage vpn connection, settings, etc.";
         desktopName = "NordVPN GUI";
         exec = "nordvpn-gui";
         name = "nordvpn-gui";
-        noDisplay = false;
-        terminal = false;
       }
     ))
   ];
 
-  meta = myMeta // {
-    description = ''
-      NordVPN gui application.
-      Presumes the dependent NordVPN cli application.
-    '';
+  meta = meta // {
+    description = "NordVPN graphical interface";
     mainProgram = "nordvpn-gui";
   };
 }

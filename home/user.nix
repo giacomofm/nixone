@@ -17,8 +17,9 @@ in {
     description = "Juk";
     extraGroups = [ "wheel" "networkmanager" "input" "docker" "vboxusers" ];
     packages = with pkgs; [
-      sublime4
       jetbrains-toolbox
+      sublime4
+      chromium
       qbittorrent
       spotify
       ripgrep
@@ -138,6 +139,12 @@ in {
         switch-to-workspace-down = [];
         switch-to-workspace-up = [];
       };
+    };
+    programs.chromium = {
+      enable = true;
+      extensions = [
+        { id = "fdjamakpfbbddfjaooikfcpapjohcfmg"; } # dashlane
+      ];
     };
   };
 }
