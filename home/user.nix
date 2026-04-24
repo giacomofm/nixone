@@ -19,7 +19,6 @@ in {
     packages = with pkgs; [
       jetbrains-toolbox
       sublime4
-      chromium
       qbittorrent
       spotify
       ripgrep
@@ -142,9 +141,11 @@ in {
     };
     programs.chromium = {
       enable = true;
+      package = pkgs.brave;
       extensions = [
         { id = "fdjamakpfbbddfjaooikfcpapjohcfmg"; } # dashlane
       ];
     };
   };
+  environment.etc."/brave/policies/managed/GroupPolicy.json".source = ../apps/brave/policies.json;
 }

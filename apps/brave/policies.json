@@ -1,0 +1,65 @@
+{
+  "BookmarkBarEnabled": true,
+  "ManagedBookmarks": [
+    {
+      "toplevel_name": "Managed Links"
+    },
+    {
+      "name": "GMail",
+      "url": "https://mail.google.com"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/giacomofm/nixone"
+    },
+    {
+      "name": "NixOs Packages",
+      "url": "https://search.nixos.org/packages?channel:unstable"
+    },
+    {
+      "name": "Speed Test",
+      "url": "https://speed.cloudflare.com"
+    },
+    {
+      "name": "Discord",
+      "url": "https://discord.com/app"
+    },
+    {
+      "name": "(╯°□°)╯︵ ┻━┻",
+      "url": "https://looks.wtf/flipping-tables/"
+    },
+    {
+      "name": "Java/Spring",
+      "children": [
+        {
+          "name": "Spring Initializr",
+          "url": "https://start.spring.io/#!type=maven-project&language=java&packaging=jar&configurationFileFormat=yaml&groupId=io.github.giacomofm&artifactId=demo&packageName=io.github.giacomofm.demo&dependencies=lombok"
+        },
+        {
+          "name": "SpringBoot - Releases",
+          "url": "https://github.com/spring-projects/spring-boot/releases"
+        },
+        {
+          "name": "Spring Framework - Docs",
+          "url": "https://docs.spring.io/spring-framework/reference/index.html"
+        },
+        {
+          "name": "banner.txt",
+          "url": "https://patorjk.com/software/taag/#p=display&f=Roman&t=Giacomo&x=none"
+        },
+        {
+          "name": "JAVA: Functional Interface",
+          "url": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdrma6Yr4j0ARont6-XJk1DB0gpMyOIy37eh2tVtikRfU9Tb7rqnjt4lUQGBquRB2IVIZTPGNet5IfVJlEIhqiw79OgBfGFT-0BApBdGtLLvuLlCg8KTy89mHOoCVlzW4bgxjkIYnsnHvDWzacYzEZT5aI5EuDbdzsgmICTOPedjhhvsf1AHFrIfg1/s2509/Java%208%20Functional%20Interface%20Naming%20Guide.png"
+        },
+        {
+          "name": "JAVA: Visibility Modifiers",
+          "url": "https://miro.medium.com/v2/resize:fit:1400/format:webp/1*GKGirEJ5-PaSz2bzGlRTjw.png"
+        },
+        {
+          "name": "That XOR Trick",
+          "url": "https://florian.github.io/xor-trick/"
+        }
+      ]
+    }
+  ]
+}
