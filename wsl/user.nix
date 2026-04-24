@@ -101,7 +101,7 @@ dtmprun() {
   else
     docker run --rm -p $1:$1 temp-image
   fi
-  # docker rmi temp-image
+  echo "> docker rmi temp-image"
 }
 
 # Projects Utils:

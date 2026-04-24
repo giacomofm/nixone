@@ -94,7 +94,7 @@ in {
           else
             docker run --rm -p $1:$1 temp-image
           fi
-          echo "docker rmi temp-image"
+          echo "> docker rmi temp-image"
         }
 
         # Rust extra:
