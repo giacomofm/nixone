@@ -17,6 +17,7 @@
   # programs.appimage.enable = true;
   environment.systemPackages = with pkgs; [
     git
+    vim
     httpie
     ffmpeg
     ripgrep
