@@ -65,7 +65,7 @@ nixone() {
   echo '> git add . && git commit -m "Update" && git push'
   echo '> nixtest (aka: sudo nixos-rebuild test)'
   echo '> nixupgr (aka: sudo nixos-rebuild switch --upgrade)'
-  echo '> (wsl --shutdown)'
+  echo '> (wsr / wsl --shutdown)'
 }
 
 alias echoPATH="echo $PATH | tr ':' '\n'"
