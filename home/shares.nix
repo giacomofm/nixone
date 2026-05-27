@@ -14,12 +14,13 @@ in {
   systemd.services.jellyfin.serviceConfig = {
     SupplementaryGroups = [ "video" "render" ];
   };
-  # services.miniupnpd = {
-  #   enable = on_jellyfin;
-  #   externalInterface = "enp4s0";
-  #   internalIPs = [ "enp4s0" ];
-  # };
+  services.miniupnpd = {
+    enable = on_jellyfin;
+    externalInterface = "enp4s0";
+    internalIPs = [ "enp4s0" ];
+  };
   # Network
+  networking.nftables.enable = on_jellyfin;
   networking.firewall = {
     enable = true;
     allowPing = true;

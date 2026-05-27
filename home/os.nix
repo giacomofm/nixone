@@ -44,5 +44,6 @@
     loupe
     input-remapper
     hydrapaper
+    steam-run
   ];
 }
