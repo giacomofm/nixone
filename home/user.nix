@@ -24,6 +24,7 @@ in {
       ripgrep
       gcc # x Rust
       obsidian
+      obs-studio
     ];
   };
   services.usbmuxd.enable = true; # x iPhone

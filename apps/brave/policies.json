@@ -14,7 +14,7 @@
     },
     {
       "name": "NixOs Packages",
-      "url": "https://search.nixos.org/packages?channel:unstable"
+      "url": "https://search.nixos.org/packages?channel=unstable"
     },
     {
       "name": "Speed Test",
