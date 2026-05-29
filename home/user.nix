@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/master.tar.gz;
 in {
@@ -27,7 +27,20 @@ in {
       obs-studio
     ];
   };
-  services.usbmuxd.enable = true; # x iPhone
+
+  # region obs
+  # virtual camera
+  boot = {
+    kernelModules = [ "v4l2loopback" ];
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+    extraModprobeConfig = ''
+      options v4l2loopback devices=1 video_nr=1 card_label="OBS Cam" exclusive_caps=1
+    '';
+  };
+  security.polkit.enable = true;
+  # endregion
+
+  # services.usbmuxd.enable = true; # x iPhone
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;                 # Open ports in the firewall for Steam Remote Play
