@@ -13,6 +13,10 @@
       "url": "https://github.com/giacomofm/nixone"
     },
     {
+      "name": "Codeberg",
+      "url": "https://codeberg.org/"
+    },
+    {
       "name": "NixOs Packages",
       "url": "https://search.nixos.org/packages?channel=unstable"
     },

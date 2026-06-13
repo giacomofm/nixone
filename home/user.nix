@@ -51,69 +51,9 @@ in {
     # The state version is required and should stay at the version you originally installed.
     home.stateVersion = "25.05";
     # home.packages = [ pkgs.atool pkgs.httpie ];
-    home.shellAliases = {
-      ping = "ping -c 4";
-      buuu = "shutdown now";
-      http = "http -v";
-      nixtest = "sudo nixos-rebuild test";
-      nixupgr = "sudo nixos-rebuild switch --upgrade";
-      nn = "nordvpn";
-      nns = "nordvpn status";
-      nnc = "nordvpn connect Switzerland";
-    };
     programs.bash = {
       enable = true;
-      bashrcExtra = ''
-        fifi() {
-          sudo find / -path /nix/store -prune -o -type f -iname "$1"
-        }
-        fidi() {
-          sudo find / -path /nix/store -prune -o -type d -iname "$1"
-        }
-        fitx() {
-          if [ $# -eq 1 ]; then
-            rg -i --regexp "$1" .
-          elif [ $# -eq 2 ]; then
-            rg -i --regexp "$1" $2
-          elif [ $# -eq 3 ]; then
-            rg --type $3 -i --regexp "$1" $2
-          else
-            echo "fitx REGEX_PATTERN [PATH] [FILE_TYPE]"
-          fi
-        }
-        nixone() {
-          cd /etc/nixos/nixone
-          git pull
-          echo '> git add . && git commit -m "Update" && git push'
-          echo '> nixtest (aka: sudo nixos-rebuild test)'
-          echo '> nixupgr (aka: sudo nixos-rebuild switch --upgrade)'
-        }
-
-        # Docker Utils:
-        alias dcu='docker compose up -d'
-        alias dcd='docker compose down'
-        alias ddrop='docker system prune -a --volumes'
-        dls() {
-          echo "Images:"
-          docker image ls
-          echo -e "\n\nContainers:"
-          docker container ls
-          echo -e "\n\nVolumes: "
-          docker volume ls
-        }
-        dtmprun() {
-          docker build -t temp-image .
-          if [ -z "$1" ]; then
-            docker run --rm temp-image
-          else
-            docker run --rm -p $1:$1 temp-image
-          fi
-          echo "> docker rmi temp-image"
-        }
-
-        # Rust extra:
-        . "$HOME/.cargo/env"
-      '';
+      bashrcExtra = builtins.readFile ../apps/bash/rc.sh;
     };
     programs.starship = {
       enable = true;

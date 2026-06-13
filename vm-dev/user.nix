@@ -23,25 +23,12 @@ in
   home-manager.users.juk = { pkgs, ... }: {
     home.stateVersion = "25.11"; # The state version is required and should stay at the version you originally installed.
     # home.packages = [ pkgs.atool pkgs.httpie ];
-    home.shellAliases = {
-      buuu = "shutdown now";
-      nixtest = "sudo nixos-rebuild test";
-      nixupgr = "sudo nixos-rebuild switch --upgrade";
-    };
     home.sessionVariables = {
       JAVA_HOME = "${java-version}";
     };
     programs.bash = {
       enable = true;
-      bashrcExtra = ''
-        nixone() {
-          cd /etc/nixos/nixone
-          git pull
-          echo '> git add . && git commit -m "Update" && git push'
-          echo '> nixtest (aka: sudo nixos-rebuild test)'
-          echo '> nixupgr (aka: sudo nixos-rebuild switch --upgrade)'
-        }
-      '';
+      bashrcExtra = builtins.readFile ../apps/bash/rc.sh;
     };
     programs.git = {
       enable = true;
