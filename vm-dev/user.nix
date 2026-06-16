@@ -23,6 +23,7 @@ in
   home-manager.users.juk = { pkgs, ... }: {
     home.stateVersion = "25.11"; # The state version is required and should stay at the version you originally installed.
     # home.packages = [ pkgs.atool pkgs.httpie ];
+    home.file.".config/hypr/hyprland.conf".source = ../apps/hypr/hyprland.conf;
     home.sessionVariables = {
       JAVA_HOME = "${java-version}";
     };

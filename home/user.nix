@@ -51,6 +51,7 @@ in {
     # The state version is required and should stay at the version you originally installed.
     home.stateVersion = "25.05";
     # home.packages = [ pkgs.atool pkgs.httpie ];
+    home.file.".config/hypr/hyprland.conf".source = ../apps/hypr/hyprland.conf;
     programs.bash = {
       enable = true;
       bashrcExtra = builtins.readFile ../apps/bash/rc.sh;

@@ -16,13 +16,13 @@ in
     xwayland.enable = true;
   };
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.NIXOS_OZONE_WL = "1"; # Hint Electron apps to use Wayland
   environment.systemPackages = with pkgs; [
-    hyprlauncher
-    hyprpolkitagent
-    kitty
-    mako
-    kdePackages.dolphin
+    hyprlauncher        # https://wiki.hypr.land/Hypr-Ecosystem/hyprlauncher
+    hyprpolkitagent     # https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent
+    mako                # https://wiki.hypr.land/Useful-Utilities/Must-have/#a-notification-daemon
+    ghostty
+    nautilus
   ];
 
   # [PipeWire](https://wiki.nixos.org/wiki/PipeWire)
