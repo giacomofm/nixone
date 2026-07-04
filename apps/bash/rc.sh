@@ -1,4 +1,6 @@
 alias buuu='shutdown now'
+alias seya='sudo systemd-run --on-active="60m" systemctl poweroff --force'
+
 alias nixtest='sudo nixos-rebuild test'
 alias nixupgr='sudo nixos-rebuild switch --upgrade'
 nixone() {
