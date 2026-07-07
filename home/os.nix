@@ -19,13 +19,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
   # Network
-  networking = {
-    hostName = "desknix";
-    extraHosts = ''
-      127.0.0.1 www.sublimetext.com
-      127.0.0.1 sublimetext.com
-    '';
-  };
+  networking.hostName = "desknix";
   # Docker
   virtualisation.docker.enable = true;
   # VirtualBox
