@@ -7,15 +7,13 @@ in {
   ];
   nixpkgs.config = {
     allowUnfree = true;
-    permittedInsecurePackages = [
-      "openssl-1.1.1w"
-    ];
+    problems.handlers.sublimetext4.broken = "warn";
   };
   users.users.juk = {
     uid = 1000;
     isNormalUser = true;
     description = "Juk";
-    extraGroups = [ "wheel" "networkmanager" "input" "docker" "vboxusers" ];
+    extraGroups = [ "wheel" "networkmanager" "input" "docker" "vboxusers" "nordvpn" ];
     packages = with pkgs; [
       jetbrains-toolbox
       sublime4

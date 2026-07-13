@@ -1,3 +1,5 @@
+_waiting for: [nordvpn service](https://github.com/NixOS/nixpkgs/pull/538312)_
+
 # NixOS
 
 [nix.dev](https://nix.dev/)  

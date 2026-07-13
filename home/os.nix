@@ -7,7 +7,6 @@
     ./nvidia.nix
     ./shares.nix
     ./disk-tera.nix
-    ./nordvpn.nix
   ];
   nix.settings.experimental-features = [
     "nix-command"
@@ -20,6 +19,9 @@
   boot.loader.systemd-boot.editor = false;
   # Network
   networking.hostName = "desknix";
+  # NordVPN
+  services.nordvpn.enable = true;
+  networking.firewall.checkReversePath = "loose";
   # Docker
   virtualisation.docker.enable = true;
   # VirtualBox
@@ -36,8 +38,8 @@
     vlc
     gparted
     loupe
-    input-remapper
+    # input-remapper
     hydrapaper
-    # steam-run
+    nordvpn
   ];
 }
