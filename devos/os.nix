@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   imports = [
     ../locale/base.nix
+#    ../desktop/hyprland.nix
     ../desktop/gnome.nix
     ./user.nix
   ];
