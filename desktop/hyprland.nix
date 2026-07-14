@@ -5,14 +5,20 @@ let
   };
 in
 {
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "${custom-astronaut}/share/sddm/themes/sddm-astronaut-theme";
-    extraPackages = [ custom-astronaut ];
+  services.displayManager = {
+    defaultSession = "hyprland";
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+      theme = "${custom-astronaut}/share/sddm/themes/sddm-astronaut-theme";
+      extraPackages = [ custom-astronaut ];
+    };
   };
+
+  # Hyprland
   programs.hyprland = {
     enable = true;
+    withUWSM  = true;
     xwayland.enable = true;
   };
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";

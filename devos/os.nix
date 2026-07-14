@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   imports = [
     ../locale/base.nix
-#    ../desktop/hyprland.nix
-    ../desktop/gnome.nix
+    ../desktop/hyprland.nix
+#    ../desktop/gnome.nix
     ./user.nix
   ];
   nix.settings.experimental-features = [
@@ -44,5 +44,6 @@
     loupe
     gparted
     nordvpn
+    cpu-x
   ];
 }
