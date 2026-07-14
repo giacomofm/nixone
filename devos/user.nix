@@ -23,7 +23,7 @@ in {
   };
   home-manager.users.juk = { pkgs, ... }: {
     home.stateVersion = "25.11";
-#    home.file.".config/hypr/hyprland.conf".source = ../apps/hypr/hyprland.conf;
+    home.file.".config/hypr/hyprland.conf".source = ../apps/hypr/hyprland.conf;
     home.sessionVariables = {
       JAVA_HOME = "${java-version}";
     };
