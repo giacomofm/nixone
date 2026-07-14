@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ../locale/base.nix
     ../desktop/gnome.nix
@@ -9,32 +9,38 @@
     "flakes"
   ];
 
-  # vv FIX-HERE vv
-  # Boot MBR
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  # Boot EFI
+  # Boot
+  boot.loader.timeout = 3;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.editor = false;
-  # ^^ FIX-HERE ^^
 
   # Network
-  networking.hostName = "recover";
+  networking.hostName = "devsnix";
 
-  # VMware
-  # virtualisation.vmware.guest.enable = true;
+  # NordVPN
+  services.nordvpn.enable = true;
+  networking.firewall.checkReversePath = "loose";
+
+  # Docker
+  virtualisation.docker.enable = true;
+
   # VirtualBox
-  # virtualisation.virtualbox.guest.enable = true;
-  # virtualisation.virtualbox.guest.dragAndDrop = true;
+  virtualisation.virtualbox.host.enable = true;
 
   # App
-  programs.firefox.enable = true;
   # programs.appimage.enable = true;
+  # programs.firefox.enable = true;
   environment.systemPackages = with pkgs; [
     git
     ghostty
-    gparted
     fastfetch
+    tldr
+    ripgrep
+    httpie
+    ffmpeg
+    loupe
+    gparted
+    nordvpn
   ];
 }
