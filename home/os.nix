@@ -32,6 +32,7 @@
   environment.systemPackages = with pkgs; [
     git
     ghostty
+    tldr
     fastfetch
     httpie
     ffmpeg
