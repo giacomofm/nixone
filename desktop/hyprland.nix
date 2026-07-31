@@ -1,7 +1,7 @@
 { pkgs, ... }:
 let
   custom-astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "jake_the_dog"; 
+    embeddedTheme = "post-apocalyptic_hacker"; 
   };
 in
 {

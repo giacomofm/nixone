@@ -27,7 +27,7 @@
   virtualisation.docker.enable = true;
 
   # VirtualBox
-  virtualisation.virtualbox.host.enable = true;
+  # virtualisation.virtualbox.host.enable = true;
 
   # App
   # programs.appimage.enable = true;
