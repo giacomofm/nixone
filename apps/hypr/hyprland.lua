@@ -21,7 +21,6 @@ hl.bind("ALT + Return",         hl.dsp.window.fullscreen())
 hl.bind("ALT + SHIFT + Return", hl.dsp.window.float({ action = "toggle" }))
 
 ---- FOCUS
-
 hl.bind("SUPER + up",    hl.dsp.focus({ direction = "u" }))
 hl.bind("SUPER + down",  hl.dsp.focus({ direction = "d" }))
 hl.bind("SUPER + left",  hl.dsp.focus({ direction = "l" }))
@@ -55,3 +54,7 @@ hl.config({
     master = { orientation = "left" },
 })
 hl.bind("SUPER + M", hl.dsp.layout("swapwithmaster master"))
+
+---- CURSOR
+hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
+hl.env("HYPRCURSOR_SIZE", "26")

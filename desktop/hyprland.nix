@@ -26,6 +26,8 @@ in
   environment.systemPackages = with pkgs; [
     hyprlauncher        # https://wiki.hypr.land/Hypr-Ecosystem/hyprlauncher
     hyprpolkitagent     # https://wiki.hypr.land/Hypr-Ecosystem/hyprpolkitagent
+    hyprcursor          # https://wiki.hypr.land/Hypr-Ecosystem/hyprcursor
+    rose-pine-hyprcursor  # hyprcursor theme
     mako                # https://wiki.hypr.land/Useful-Utilities/Must-have/#a-notification-daemon
     ghostty
     nautilus
