@@ -38,6 +38,8 @@
     ghostty
     fastfetch
     tldr
+    btop
+    htop
     ripgrep
     httpie
     ffmpeg

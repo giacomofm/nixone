@@ -20,6 +20,7 @@ in {
       qbittorrent
       spotify
       ripgrep
+      glances
       gcc # x Rust
       obsidian
       obs-studio

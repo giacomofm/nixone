@@ -2,7 +2,7 @@
 let
   on_ftp = false;
   on_samba = false;
-  on_jellyfin = true;
+  on_jellyfin = false;
 in {
   # Jellyfin
   # (?) sudo setfacl -R -m u:jellyfin:rx /path/to/open
