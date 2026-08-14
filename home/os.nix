@@ -33,6 +33,7 @@
     git
     ghostty
     tldr
+    htop
     fastfetch
     httpie
     ffmpeg
