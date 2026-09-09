@@ -24,6 +24,7 @@ in {
       gcc # x Rust
       obsidian
       obs-studio
+      pi-coding-agent
     ];
   };
 
