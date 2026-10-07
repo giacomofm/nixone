@@ -5,6 +5,10 @@
       "toplevel_name": "Managed Links"
     },
     {
+      "name": "YouTube",
+      "url": "https://youtube.com/feed/history"
+    },
+    {
       "name": "GMail",
       "url": "https://mail.google.com"
     },
