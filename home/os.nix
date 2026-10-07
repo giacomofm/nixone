@@ -36,6 +36,7 @@
     htop
     btop
     fastfetch
+    ripgrep
     httpie
     ffmpeg
     vlc

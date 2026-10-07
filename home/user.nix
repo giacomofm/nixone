@@ -7,7 +7,6 @@ in {
   ];
   nixpkgs.config = {
     allowUnfree = true;
-    problems.handlers.sublimetext4.broken = "warn";
   };
   users.users.juk = {
     uid = 1000;
@@ -15,13 +14,11 @@ in {
     description = "Juk";
     extraGroups = [ "wheel" "networkmanager" "input" "docker" "vboxusers" "nordvpn" ];
     packages = with pkgs; [
-      jetbrains-toolbox
+      # jetbrains-toolbox
       sublime4
       qbittorrent
       spotify
-      ripgrep
       glances
-      gcc # x Rust
       obsidian
       obs-studio
       pi-coding-agent
