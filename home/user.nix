@@ -97,6 +97,7 @@ in {
       package = pkgs.brave;
       extensions = [
         { id = "fdjamakpfbbddfjaooikfcpapjohcfmg"; } # dashlane
+        { id = "ckkdlimhmcjmikdlpkmbgfkaikojcbjk"; } # markdown viewer
       ];
     };
   };
