@@ -22,6 +22,7 @@ in {
       obsidian
       obs-studio
       pi-coding-agent
+      opencode
     ];
   };
 
